@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   //const [enteredTitle, setEnteredTitle] = useState("");
   //const [enteredAmount, setEnteredAmount] = useState("");
   //const [enteredDate, setEnteredDate] = useState("");
@@ -33,14 +33,15 @@ const ExpenseForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(userInput);
-    setUserInput(()=>{
-        return{
-            enteredAmount: "",
-            enteredDate: "",
-            enteredTitle: ""
-        }
-    })
+    //calls the passed in listener "onSaveExpenseData" from NewExpense on form submit
+    props.onSaveExpenseData(userInput);
+    setUserInput(() => {
+      return {
+        enteredAmount: "",
+        enteredDate: "",
+        enteredTitle: "",
+      };
+    });
   };
 
   return (

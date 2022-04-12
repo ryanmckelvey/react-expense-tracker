@@ -2,6 +2,11 @@ import Expenses from "./components/Expense/Expenses/Expenses";
 import NewExpense from "./components/New Expense/NewExpense";
 
 function App() {
+const newExepenseHandler = expense => {
+  console.log(expense);
+  console.log("in app.js");
+}
+
   const expenses = [
     {
       id: "e1",
@@ -27,7 +32,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <NewExpense/>
+        {/*Example of child-to-parent communication*/}
+        <NewExpense onAddExpense={newExepenseHandler}/>
       </header>
       <Expenses expenses={expenses} />
     </div>
