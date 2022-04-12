@@ -1,28 +1,35 @@
+import React, { useState } from "react";
+
 import ExpenseItem from "../ExpenseItem/ExpenseItem";
 import Card from "../../UI/Card/Card";
+import ExpenseFilter from "../../ExpenseFilter/ExpenseFilter";
 
 import "./Expenses.css";
 
 function Expenses(props) {
+  const [filter, setFilter] = useState("2021");
+
   const expenses = props.expenses;
+
+  const selectionChangedHandler = (selection) => {
+    setFilter(selection);
+  };
   return (
-    <Card className="expenses">
-      <ExpenseItem
-        title={expenses[0].title}
-        amount={expenses[0].amount}
-        date={expenses[0].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[1].title}
-        amount={expenses[1].amount}
-        date={expenses[1].date}
-      ></ExpenseItem>
-      <ExpenseItem
-        title={expenses[2].title}
-        amount={expenses[2].amount}
-        date={expenses[2].date}
-      ></ExpenseItem>
-    </Card>
+    <div>
+      <Card className="expenses">
+        <ExpenseFilter
+          selected={filter}
+          onSelectionChanged={selectionChangedHandler}
+        />
+        {expenses.map((ex) => (
+          <ExpenseItem
+            title={ex.title}
+            amount={ex.amount}
+            date={ex.date}
+          ></ExpenseItem>
+        ))}
+      </Card>
+    </div>
   );
 }
 
