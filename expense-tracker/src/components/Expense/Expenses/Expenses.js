@@ -13,6 +13,7 @@ function Expenses(props) {
 
   const selectionChangedHandler = (selection) => {
     setFilter(selection);
+    console.log(selection);
   };
   return (
     <div>
@@ -21,7 +22,7 @@ function Expenses(props) {
           selected={filter}
           onSelectionChanged={selectionChangedHandler}
         />
-        {expenses.map((ex) => (
+        {expenses.map(ex => (
           <ExpenseItem
             title={ex.title}
             amount={ex.amount}
