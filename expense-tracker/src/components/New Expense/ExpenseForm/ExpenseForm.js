@@ -27,17 +27,15 @@ const ExpenseForm = (props) => {
 
   const dateChangedHandler = (event) => {
     //(2024, 5, 12) need to format date
-    const d = event.target.value.split('-')
+    const d = event.target.value.split("-");
     setUserInput((prevState) => {
-      console.log(prevState)
-      return { ...prevState, date: new Date(d[0],(d[1]-1),d[2]) };
+      return { ...prevState, date: new Date(d[0], d[1] - 1, d[2]) };
     });
     //console.log(new Date(d[0],(d[1]-1),d[2]).toLocaleString('en-us',{month: "long"}))
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
-    console.log(userInput);
     //calls the passed in listener "onSaveExpenseData" from NewExpense on form submit
     props.onSaveExpenseData(userInput);
     setUserInput(() => {
@@ -82,6 +80,7 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={props.formToggleHandler}>Cancel</button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
