@@ -20,7 +20,7 @@ const NewExpense = (props) => {
   };
   return (
     <div className="new-expense">
-      {!formToggle && <button onClick={formToggleHandler} >Add New Expense</button>}
+      {!formToggle && <button  type="button" onClick={formToggleHandler} >Add New Expense</button>}
       {formToggle && <ExpenseForm onSaveExpenseData={saveDataHandler} onFormToggle={formToggleHandler}/>}
     </div>
   );
